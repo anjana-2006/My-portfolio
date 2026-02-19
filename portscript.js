@@ -12,6 +12,7 @@ document.getElementById("contact-form").addEventListener("submit", async functio
     button.disabled = true;
 
     try {
+        // Make sure 'db' is already defined in port.html before this script runs
         await db.collection("messages").add({
             name: name,
             email: email,
@@ -19,13 +20,14 @@ document.getElementById("contact-form").addEventListener("submit", async functio
             timestamp: new Date()
         });
 
+        kotlin
+        Copy
+        Edit
         button.textContent = "Message Sent!";
         this.reset();
-        document.getElementById("status-message").innerText = "✅ Sent!";
     } catch (error) {
         console.error("Error sending message:", error);
         button.textContent = "Send Failed";
-        document.getElementById("status-message").innerText = "❌ Error: " + error.message;
     }
 
     setTimeout(() => {
@@ -33,3 +35,12 @@ document.getElementById("contact-form").addEventListener("submit", async functio
         button.disabled = false;
     }, 3000);
 });
+
+💡
+Tip: You can also display a success message below the form by adding:
+
+    <
+    p id = "status-message" > < /p>
+And using:
+
+    document.getElementById("status-message").innerText = "✅ Sent!";
